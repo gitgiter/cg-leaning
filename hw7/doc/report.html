@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">课程名称</th>
+<th style="text-align:center">计算机图形学</th>
+<th style="text-align:center">任课老师</th>
+<th style="text-align:center">高成英</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">年级</td>
+<td style="text-align:center">16级</td>
+<td style="text-align:center">专业（方向）</td>
+<td style="text-align:center">软件工程（数字媒体）</td>
+</tr>
+<tr>
+<td style="text-align:center">学号</td>
+<td style="text-align:center">16340255</td>
+<td style="text-align:center">姓名</td>
+<td style="text-align:center">谢涛</td>
+</tr>
+<tr>
+<td style="text-align:center">电话</td>
+<td style="text-align:center">13670828568</td>
+<td style="text-align:center">Email</td>
+<td style="text-align:center">1176748429@qq.com</td>
+</tr>
+<tr>
+<td style="text-align:center">开始日期</td>
+<td style="text-align:center">2019-05-11</td>
+<td style="text-align:center">完成日期</td>
+<td style="text-align:center">2019-05-13</td>
+</tr>
+</tbody>
+</table>
+<p>[TOC]</p>
+<h2 id="basic">Basic</h2>
+<ol>
+<li>实现方向光源的Shadowing Mapping:
+<ul>
+<li>要求场景中至少有一个object和一块平面(用于显示shadow)，光源的投影方式任选其一即可</li>
+<li>在报告里结合代码，解释Shadowing Mapping算法</li>
+</ul>
+</li>
+<li>修改GUI</li>
+</ol>
+<h2 id="bonus">Bonus</h2>
+<h2 id="%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82">作业要求</h2>
+<ol>
+<li>把运行结果截图贴到报告里，并回答作业里提出的问题。</li>
+<li>报告里简要说明实现思路，以及主要function/algorithm的解释。</li>
+<li>虽然learnopengl教程网站有很多现成的代码，但是希望大家全部手打，而不是直接copy。</li>
+</ol>
+<h2 id="%E6%95%88%E6%9E%9C">效果</h2>
+<p><img src="img/shadow.gif" alt=""></p>
+<h2 id="shadowing-mapping%E7%AE%97%E6%B3%95%E8%A7%A3%E9%87%8A">Shadowing Mapping算法解释</h2>
+<p>Shadowing Mapping 的主要思想是：<strong>以光源的视角进行渲染，能看到的东西都点亮，看不见的东西就在阴影里面</strong>。</p>
+<h3 id="%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%86%B2%E7%9A%84%E5%8E%9F%E5%9B%A0">使用深度缓冲的原因</h3>
+<p>从光源出发能否看见一个物体，在数学中的衡量方法通常是使用射线，如果从点光源发出的射线能够与物体产生碰撞，那么就代表能看见该物体（能点亮）。同时射线还可以用来判断某个点是否处在阴影之中，即如果射线第一次击中的物体的 “最近点” 比射线上其他点更近，是的话那么其他点就在阴影中。然而对光源发出的射线上所有的点进行遍历判断是个效率极其低下的操作，况且还不止一条射线，这在实时渲染的应用中根本无法容忍。
+使用深度缓存便可以很巧妙地解决这个问题。Z-Buffer 是 Shadowing Mapping 算法的技术基础。Shadowing Mapping 借助 Z-Buffer 来做碰撞检测。具体则是通过将深度值存储到纹理中，从而可以对光源的透视图所见的最近深度值进行采样，最终深度值就会显示从光源的透视图下见到的第一个片元了， 从而决定其他片元是否在阴影中。</p>
+<h3 id="%E6%B7%B1%E5%BA%A6%E8%B4%B4%E5%9B%BE">深度贴图</h3>
+<blockquote>
+<p>深度映射由两个步骤组成：首先，我们渲染深度贴图，然后我们像往常一样渲染场景，使用生成的深度贴图来计算片元是否在阴影之中。</p>
+</blockquote>
+<ul>
+<li>创建一个帧缓冲对象。</li>
+</ul>
+<pre class="hljs"><code><div>GLuint depthMapFBO;
+glGenFramebuffers(<span class="hljs-number">1</span>, &amp;depthMapFBO);
+</div></code></pre>
+<ul>
+<li>创建2D纹理给帧缓冲的深度缓冲使用。生成深度贴图只关心深度值，因此把纹理格式指定为 GL_DEPTH_COMPONENT。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> GLuint SHADOW_WIDTH = <span class="hljs-number">1024</span>, SHADOW_HEIGHT = <span class="hljs-number">1024</span>;
+
+GLuint depthMap;
+glGenTextures(<span class="hljs-number">1</span>, &amp;depthMap);
+glBindTexture(GL_TEXTURE_2D, depthMap);
+glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_DEPTH_COMPONENT, 
+             SHADOW_WIDTH, SHADOW_HEIGHT, <span class="hljs-number">0</span>, GL_DEPTH_COMPONENT, GL_FLOAT, <span class="hljs-literal">NULL</span>);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); 
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+</div></code></pre>
+<ul>
+<li>生成深度贴图的基本流程。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">// 1. 首选渲染深度贴图</span>
+glViewport(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, SHADOW_WIDTH, SHADOW_HEIGHT);
+glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    ConfigureShaderAndMatrices();
+    RenderScene();
+glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);
+<span class="hljs-comment">// 2. 像往常一样渲染场景，但这次使用深度贴图</span>
+glViewport(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, SCR_WIDTH, SCR_HEIGHT);
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ConfigureShaderAndMatrices();
+glBindTexture(GL_TEXTURE_2D, depthMap);
+RenderScene();
+</div></code></pre>
+<h3 id="%E5%85%89%E6%BA%90%E7%A9%BA%E9%97%B4%E7%9A%84%E5%8F%98%E6%8D%A2">光源空间的变换</h3>
+<p>之所以需要光源空间变换，是因为我们需要对摄像机视角看到的片元做出是否在阴影中的判断，而这样的判断需要在光源的视角下进行。</p>
+<ul>
+<li>这需要结合光的视图矩阵和投影矩阵。</li>
+</ul>
+<pre class="hljs"><code><div>glm::mat4 lightSpaceMatrix = lightProjection * lightView;
+</div></code></pre>
+<ul>
+<li>渲染到深度贴图。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#version 330 core</span>
+layout (location = <span class="hljs-number">0</span>) in vec3 position;
+
+uniform mat4 lightSpaceMatrix;
+uniform mat4 model;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    gl_Position = lightSpaceMatrix * model * vec4(position, <span class="hljs-number">1.0f</span>);
+}
+</div></code></pre>
+<h3 id="%E6%B8%B2%E6%9F%93%E9%98%B4%E5%BD%B1">渲染阴影</h3>
+<p>最复杂的一步，不过好在光照模型在上个作业中有做过。main函数的逻辑基本比较容易理解。不过这里加了个阴影的计算，在阴影计算的过程中使用透视除法。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#version 330 core</span>
+out vec4 FragColor;
+
+in VS_OUT {
+    vec3 FragPos;
+    vec3 Normal;
+    vec2 TexCoords;
+    vec4 FragPosLightSpace;
+} fs_in;
+
+uniform sampler2D diffuseTexture;
+uniform sampler2D shadowMap;
+
+uniform vec3 lightPos;
+uniform vec3 viewPos;
+
+<span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">ShadowCalculation</span><span class="hljs-params">(vec4 fragPosLightSpace)</span>
+</span>{
+    <span class="hljs-comment">// 执行透视除法</span>
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    [...]
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{           
+    vec3 color = texture(diffuseTexture, fs_in.TexCoords).rgb;
+    vec3 normal = normalize(fs_in.Normal);
+    vec3 lightColor = vec3(<span class="hljs-number">1.0</span>);
+    <span class="hljs-comment">// Ambient</span>
+    vec3 ambient = <span class="hljs-number">0.15</span> * color;
+    <span class="hljs-comment">// Diffuse</span>
+    vec3 lightDir = normalize(lightPos - fs_in.FragPos);
+    <span class="hljs-keyword">float</span> diff = max(dot(lightDir, normal), <span class="hljs-number">0.0</span>);
+    vec3 diffuse = diff * lightColor;
+    <span class="hljs-comment">// Specular</span>
+    vec3 viewDir = normalize(viewPos - fs_in.FragPos);
+    vec3 reflectDir = reflect(-lightDir, normal);
+    <span class="hljs-keyword">float</span> spec = <span class="hljs-number">0.0</span>;
+    vec3 halfwayDir = normalize(lightDir + viewDir);  
+    spec = <span class="hljs-built_in">pow</span>(max(dot(normal, halfwayDir), <span class="hljs-number">0.0</span>), <span class="hljs-number">64.0</span>);
+    vec3 specular = spec * lightColor;    
+    <span class="hljs-comment">// 计算阴影</span>
+    <span class="hljs-keyword">float</span> shadow = ShadowCalculation(fs_in.FragPosLightSpace);       
+    vec3 lighting = (ambient + (<span class="hljs-number">1.0</span> - shadow) * (diffuse + specular)) * color;    
+
+    FragColor = vec4(lighting, <span class="hljs-number">1.0f</span>);
+}
+</div></code></pre>
+<ul>
+<li>阴影计算的过程。前面介绍过其主要思想，就是对比目标点与最近点的深度，如果目标点深度比最近点更深，那么他就应该处在阴影中。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">ShadowCalculation</span><span class="hljs-params">(vec4 fragPosLightSpace)</span>
+</span>{
+    <span class="hljs-comment">// perform perspective divide</span>
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    <span class="hljs-comment">// Transform to [0,1] range</span>
+    projCoords = projCoords * <span class="hljs-number">0.5</span> + <span class="hljs-number">0.5</span>;
+    <span class="hljs-comment">// Get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)</span>
+    <span class="hljs-keyword">float</span> closestDepth = texture(shadowMap, projCoords.xy).r; 
+    <span class="hljs-comment">// Get depth of current fragment from light's perspective</span>
+    <span class="hljs-keyword">float</span> currentDepth = projCoords.z;
+    <span class="hljs-comment">// Calculate bias (based on depth map resolution and slope)</span>
+    vec3 normal = normalize(fs_in.Normal);
+    vec3 lightDir = normalize(lightPos - fs_in.FragPos);
+    <span class="hljs-keyword">float</span> bias = max(<span class="hljs-number">0.05</span> * (<span class="hljs-number">1.0</span> - dot(normal, lightDir)), <span class="hljs-number">0.005</span>);
+    <span class="hljs-comment">// Check whether current frag pos is in shadow</span>
+    <span class="hljs-comment">// float shadow = currentDepth - bias &gt; closestDepth  ? 1.0 : 0.0;</span>
+    <span class="hljs-comment">// PCF</span>
+    <span class="hljs-keyword">float</span> shadow = <span class="hljs-number">0.0</span>;
+    vec2 texelSize = <span class="hljs-number">1.0</span> / textureSize(shadowMap, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> x = <span class="hljs-number">-1</span>; x &lt;= <span class="hljs-number">1</span>; ++x)
+    {
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> y = <span class="hljs-number">-1</span>; y &lt;= <span class="hljs-number">1</span>; ++y)
+        {
+            <span class="hljs-keyword">float</span> pcfDepth = texture(shadowMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias &gt; pcfDepth  ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;        
+        }    
+    }
+    shadow /= <span class="hljs-number">9.0</span>;
+    
+    <span class="hljs-comment">// Keep the shadow at 0.0 when outside the far_plane region of the light's frustum.</span>
+    <span class="hljs-keyword">if</span>(projCoords.z &gt; <span class="hljs-number">1.0</span>)
+        shadow = <span class="hljs-number">0.0</span>;
+        
+    <span class="hljs-keyword">return</span> shadow;
+}
+</div></code></pre>
+<h3 id="%E4%BC%98%E5%8C%96">优化</h3>
+<p>解决锯齿问题。因为阴影贴图受限于解析度，在距离光源比较远的情况下，多个片元可能从深度贴图的同一个值中去采样。这样只需要加一个简单的偏移量即可。</p>
+<ul>
+<li>对表面深度做一个微小偏移即可，通常0.005的偏移量就能解决大部分问题。但有些表面坡度较大，不平整，这样保险起见还是对表面朝向光线的角度更改偏移量。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">float</span> bias = max(<span class="hljs-number">0.05</span> * (<span class="hljs-number">1.0</span> - dot(normal, lightDir)), <span class="hljs-number">0.005</span>);
+<span class="hljs-keyword">float</span> shadow = currentDepth - bias &gt; closestDepth  ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;
+</div></code></pre>
+<h2 id="%E4%B8%BB%E8%A6%81%E7%9A%84functionalgorithm%E8%A7%A3%E9%87%8A">主要的function/algorithm解释</h2>
+<ul>
+<li><strong>glm::mat4(1.0f)。</strong> 生成一个4*4的单位矩阵，用于配合后面的变换函数生成变换矩阵。</li>
+<li><strong>glm::translate(mat4, glm::vec3)。</strong> 传入一个三维向量表示位移量，glm根据这个位移量，并在mat4的基础上，加入位移变换，生成新的矩阵并返回。</li>
+<li><strong>glm::perspective(mat4, width/height, near, far)。</strong> 第一个参数是view矩阵，第二个参数是窗口的宽高比，前两个参数基本固定。后两个参数定义最近、最远能看到的平面的垂直距离。</li>
+<li><strong>glm::lookAt(position, target, up)。</strong> 该函数可以产生一个效果是始终看着某一点的view矩阵。三个参数都是一个glm::vec3类型的向量，分别指定摄像机的位置、观察目标和上向量（用于定位摄像机的角度）。</li>
+<li><strong>glGetUniformLocation(shaderProgram, uniformName)。</strong> 这个函数返回着色器程序中uniform变量的地址，如果没有找到返回-1。第一个参数是链接后的着色器程序的id（不是顶点着色器的id，一开始传错参数坑了很久）。第二个参数是要找的uniform变量的名称。</li>
+<li><strong>glUniformMatrix4fv(uniformLocation, count, transpose, address)。</strong> 该函数的作用是对着色器程序中uniform变量的赋值。第一个参数是上个函数返回的uniform变量在着色器程序中的地址，第二个参数表示要改变的uniform变量的个数，传1表示要修改的uniform变量不是数组。第三个参数是布尔类型，指定传进去的变换矩阵是否要做转置。第四个参数则是要传进去的变换矩阵的地址。</li>
+<li><strong>glUniform3fv(uniformLocation, count, address)。</strong> 类似上面的函数，不过是传一个三维的浮点数向量，不用指定transpose。</li>
+<li><strong>glUniform1fv(uniformLocation, count, address)。</strong> 类似上面的函数，传一个一维的浮点数向量。</li>
+<li><strong>glUniform1iv(uniformLocation, count, address)。</strong> 类似上面的函数，传一个一维的整数向量。</li>
+<li>其他glUniform函数以此类推。</li>
+</ul>
+
+</body>
+</html>
